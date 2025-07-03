@@ -65,7 +65,7 @@
     
     #controls {
       position: absolute;
-      bottom: 16px;
+      bottom: 87px;
       left: 16px;
       max-width: unset;
       transform: unset;
@@ -106,7 +106,6 @@
       pointer-events: none;
       --min-hotspot-opacity: 0;
     }
-
 
     .dimensionLineContainer {
       pointer-events: none;
