@@ -1,6 +1,6 @@
     model-viewer[ar] button[aria-label="Take picture"],
     model-viewer[ar] button[title="Take picture"] {
-      display: none !important;
+      display: none;
     }
 
 /* === Base Styles === */
@@ -64,9 +64,9 @@
     }
     
     #controls {
-      position: absolute;
-      bottom: 116px;
-      left: 16px;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
       max-width: unset;
       transform: unset;
       pointer-events: auto;
@@ -370,20 +370,6 @@
       overflow: hidden;
     }
 
-    /* === texts=== */
-
-    #paragraph1{
-      padding: 0px;
-    }
-
-    #paragraph2{
-      padding: 0px;
-    }
-
-    #paragraph3{
-      padding: 0px;
-    }
-
 
     @media (max-width: 600px) {
         .mainpage-container {
@@ -486,6 +472,12 @@
         .loadingText img{
           width: 300px;
         }
+      
+      #controls{
+        left: 10px;
+        right: auto;
+        width: auto;
+      }
     }
 
 
