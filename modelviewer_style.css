@@ -478,6 +478,14 @@
         left: 10px;
         right: auto;
         width: auto;
+        bottom: 59px;
+      }
+      
+      #ar-button{
+        right: 10px;
+        left: auto;
+        width: auto;
+        bottom: 37px;
       }
     }
 
