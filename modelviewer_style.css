@@ -64,8 +64,8 @@
     }
 
     #ar-button {
-      position: fixed;
       cursor: pointer;
+      z-index: 100;
       width: 95px;
       height: 95px;
       bottom: 102px;
@@ -75,12 +75,12 @@
     }
     
     #controls {
-      position: fixed;
       bottom: 130px;
       left: 20px;
       max-width: unset;
       transform: unset;
       pointer-events: auto;
+      z-index: 100;
     }
 
     .dot {
