@@ -192,7 +192,7 @@
 
     /* === AR Button === */
     #ar-button {
-      position: absolute;
+      position: fixed;
       color: #ffffff;
       font-size: 15px;
       cursor: pointer;
