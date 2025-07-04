@@ -487,6 +487,10 @@
         width: auto;
         bottom: 37px;
       }
+      
+      .dim{
+        font-size: 0.6em;
+      }
     }
 
 
