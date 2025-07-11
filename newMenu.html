@@ -7,6 +7,32 @@
   <link rel="stylesheet" href="https://use.typekit.net/zfi8dmc.css">
   <link rel="stylesheet" href="newmenu_style.css">
   <title>3D Model Thumbnails</title>
+  
+  <style>
+        /* Pulse Animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(44, 167, 204, 0.78);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 13px rgba(204, 169, 44, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+      }
+    }
+
+    #view-model-btn.selected {
+      animation: pulse 1.3s infinite;
+      border-radius: 9px;
+      border-radius: 93px;
+      padding: 0px;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -69,9 +95,9 @@
     </div>
   </div>
   <div id="footer">
-      <img src="icon/buttonSelection.png" id="view-model-btn" disabled>
+      <img src="icon/buttonSelectionbg.png" id="view-model-btn-bg" disabled>
+      <img src="icon/selectionIcon.png" id="view-model-btn">
   </div>
-
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
@@ -95,6 +121,9 @@
         selectedModelUrl = thumb.getAttribute('data-model');
         selectedModelName = thumb.getAttribute('data-name');
         viewModelBtn.disabled = false;
+
+        // 👇 Add this line
+        viewModelBtn.classList.add('selected');
       });
     });
 

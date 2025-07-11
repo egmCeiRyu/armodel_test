@@ -105,10 +105,19 @@
 
     #view-model-btn {
       position: fixed;
+      color: white;
+      cursor: pointer;
+      margin: auto;
+      bottom: 1%;
+      height:100px;
+      width: 100px;
+      left:38%
+    }
+
+
+    #view-model-btn-bg {
+      position: fixed;
       bottom: -5px; /* Distance from the bottom of the screen */
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 27px;
       color: white;
       cursor: pointer;
     }
