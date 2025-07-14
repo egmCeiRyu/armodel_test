@@ -1,10 +1,108 @@
 <!DOCTYPE html>
 <html lang="jp">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Sousa</title>
-    </head>
-    <body>
-        
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Image Viewer</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    #image-container img {
+      max-width: 80%;
+      height: auto;
+      margin-top: 20px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+
+    #controls {
+      margin-top: 20px;
+    }
+
+    #controls img {
+      width: 100px; /* Adjust size of your button images */
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #controls img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="image-container">
+    <img id="main-image" src="icon/sousaImage.png" alt="Image">
+  </div>
+
+  <div id="controls">
+    <img id="back-btn" src="icon/back.png" alt="Back" onclick="goBack()" style="display:none;">
+      <img id="exit-btn" src="icon/returnbtn.png" alt="Exit" onclick="exitViewer()" style="display:none;">
+    <img id="next-btn" src="icon/next.png" alt="Next" onclick="goNext()" style="display:none;">
+  </div>
+
+  <script>
+    const images = ["image1.png", "image2.png", "image3.png"];
+    let currentIndex = 0;
+
+    const mainImage = document.getElementById("main-image");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const exitBtn = document.getElementById("exit-btn");
+
+    function updateImage() {
+      mainImage.src = images[currentIndex];
+      updateButtons();
+    }
+
+    function updateButtons() {
+      // Hide all buttons by default
+      backBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      exitBtn.style.display = "none";
+
+      if (currentIndex === 0) {
+        // First image: Exit + Next
+        nextBtn.style.display = "inline-block";
+        exitBtn.style.display = "inline-block";
+      } else if (currentIndex === 1) {
+        // Second image: Back + Next + Exit
+        backBtn.style.display = "inline-block";
+        nextBtn.style.display = "inline-block";
+        exitBtn.style.display = "inline-block";
+      } else if (currentIndex === 2) {
+        // Third image: Back + Exit
+        backBtn.style.display = "inline-block";
+        exitBtn.style.display = "inline-block";
+      }
+    }
+
+    function goNext() {
+      if (currentIndex < images.length - 1) {
+        currentIndex++;
+        updateImage();
+      }
+    }
+
+    function goBack() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateImage();
+      }
+    }
+
+    function exitViewer() {
+      // Redirect to another webpage
+      window.location.href = "model-viewer.html"; // Change this to your target URL
+    }
+
+    // Initialize on load
+    updateButtons();
+  </script>
+</body>
 </html>
