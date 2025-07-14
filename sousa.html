@@ -24,10 +24,10 @@
     }
 
     #controls img {
-      width: 100px; /* Adjust size of your button images */
-      margin: 10px;
+      width: 75px; /* Adjust size of your button images */
       cursor: pointer;
       transition: transform 0.2s;
+      display: inline;
     }
 
     #controls img:hover {
@@ -36,14 +36,20 @@
       
     #back-btn{
       scale: 55%;
+      padding : 0px;
+      margin : 0px;
     }
       
     #next-btn{
       scale: 55%;
+      padding : 0px;
+      margin : 0px;
     }
       
     #exit-btn{
-      scale: 55%;    
+      scale: 55%; 
+      padding : -21px;
+      margin : 0px;
     }
   </style>
 </head>
@@ -54,7 +60,7 @@
 
   <div id="controls">
     <img id="back-btn" src="icon/back.png" alt="Back" onclick="goBack()" style="display:none;">
-      <img id="exit-btn" src="icon/returnbtn.png" alt="Exit" onclick="exitViewer()" style="display:none;">
+    <img id="exit-btn" src="icon/returnbtn.png" alt="Exit" onclick="exitViewer()" style="display:none;">
     <img id="next-btn" src="icon/next.png" alt="Next" onclick="goNext()" style="display:none;">
   </div>
 
