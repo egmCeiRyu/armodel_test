@@ -33,11 +33,23 @@
     #controls img:hover {
       transform: scale(1.1);
     }
+      
+    #back-btn{
+      scale: 55%;
+    }
+      
+    #next-btn{
+      scale: 55%;
+    }
+      
+    #exit-btn{
+      scale: 55%;    
+    }
   </style>
 </head>
 <body>
   <div id="image-container">
-    <img id="main-image" src="icon/sousaImage.png" alt="Image">
+    <img id="main-image" src="icon/image1.png" alt="Image">
   </div>
 
   <div id="controls">
@@ -47,7 +59,7 @@
   </div>
 
   <script>
-    const images = ["image1.png", "image2.png", "image3.png"];
+    const images = ["icon/image1.png", "icon/image2.png", "icon/image3.png"];
     let currentIndex = 0;
 
     const mainImage = document.getElementById("main-image");
@@ -98,7 +110,7 @@
 
     function exitViewer() {
       // Redirect to another webpage
-      window.location.href = "model-viewer.html"; // Change this to your target URL
+      window.location.href = `model-viewer.html?model=${encodeURIComponent(selectedModelUrl)}`; // Change this to your target URL
     }
 
     // Initialize on load
