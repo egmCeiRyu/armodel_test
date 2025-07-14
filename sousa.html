@@ -58,63 +58,68 @@
     <img id="next-btn" src="icon/next.png" alt="Next" onclick="goNext()" style="display:none;">
   </div>
 
-  <script>
-    const images = ["icon/image1.png", "icon/image2.png", "icon/image3.png"];
-    let currentIndex = 0;
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedModelUrl = urlParams.get('model');
 
-    const mainImage = document.getElementById("main-image");
-    const backBtn = document.getElementById("back-btn");
-    const nextBtn = document.getElementById("next-btn");
-    const exitBtn = document.getElementById("exit-btn");
+  const images = ["icon/image1.png", "icon/image2.png", "icon/image3.png"];
+  let currentIndex = 0;
 
-    function updateImage() {
-      mainImage.src = images[currentIndex];
-      updateButtons();
-    }
+  const mainImage = document.getElementById("main-image");
+  const backBtn = document.getElementById("back-btn");
+  const nextBtn = document.getElementById("next-btn");
+  const exitBtn = document.getElementById("exit-btn");
 
-    function updateButtons() {
-      // Hide all buttons by default
-      backBtn.style.display = "none";
-      nextBtn.style.display = "none";
-      exitBtn.style.display = "none";
-
-      if (currentIndex === 0) {
-        // First image: Exit + Next
-        nextBtn.style.display = "inline-block";
-        exitBtn.style.display = "inline-block";
-      } else if (currentIndex === 1) {
-        // Second image: Back + Next + Exit
-        backBtn.style.display = "inline-block";
-        nextBtn.style.display = "inline-block";
-        exitBtn.style.display = "inline-block";
-      } else if (currentIndex === 2) {
-        // Third image: Back + Exit
-        backBtn.style.display = "inline-block";
-        exitBtn.style.display = "inline-block";
-      }
-    }
-
-    function goNext() {
-      if (currentIndex < images.length - 1) {
-        currentIndex++;
-        updateImage();
-      }
-    }
-
-    function goBack() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateImage();
-      }
-    }
-
-    function exitViewer() {
-      // Redirect to another webpage
-      window.location.href = `model-viewer.html?model=${encodeURIComponent(selectedModelUrl)}`; // Change this to your target URL
-    }
-
-    // Initialize on load
+  function updateImage() {
+    mainImage.src = images[currentIndex];
     updateButtons();
-  </script>
+  }
+
+  function updateButtons() {
+    backBtn.style.display = "none";
+    nextBtn.style.display = "none";
+    exitBtn.style.display = "none";
+
+    if (currentIndex === 0) {
+      nextBtn.style.display = "inline-block";
+      exitBtn.style.display = "inline-block";
+    } else if (currentIndex === 1) {
+      backBtn.style.display = "inline-block";
+      nextBtn.style.display = "inline-block";
+      exitBtn.style.display = "inline-block";
+    } else if (currentIndex === 2) {
+      backBtn.style.display = "inline-block";
+      exitBtn.style.display = "inline-block";
+    }
+  }
+
+  function goNext() {
+    if (currentIndex < images.length - 1) {
+      currentIndex++;
+      updateImage();
+    }
+  }
+
+  function goBack() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateImage();
+    }
+  }
+
+  function exitViewer() {
+    // ✅ Return to the model-viewer page with the same model
+    if (selectedModelUrl) {
+      window.location.href = `model-viewer.html?model=${encodeURIComponent(selectedModelUrl)}`;
+    } else {
+      alert("Model URL not found!");
+      window.location.href = 'model-viewer.html';
+    }
+  }
+
+  updateImage();
+</script>
+
+
 </body>
 </html>

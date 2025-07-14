@@ -52,10 +52,21 @@
 
       <!-- Botão especificações -->
       <img class="specification" src="icon/infobtn.png" alt="specification" id="specButton"> 
-      <a href="sousa.html">
+      <a id="controlsLink">
         <img class="controls" src="icon/infobtn.png" alt="controls" id="controlsButton">
       </a>
-        
+
+      <script>
+        // Dynamically build the sousa.html link
+        const modelParam = new URLSearchParams(window.location.search).get('model');
+        const controlsLink = document.getElementById('controlsLink');
+
+        if (modelParam) {
+          controlsLink.href = `sousa.html?model=${encodeURIComponent(modelParam)}`;
+        } else {
+          controlsLink.href = `sousa.html`;
+        }
+      </script>
     </div>
 
     <div id="arOverlay" class="ar-overlay">
