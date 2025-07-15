@@ -118,13 +118,19 @@
     #view-model-btn {
       position: fixed;
       bottom: 3%;
-      left: 50%;
-      transform: translateX(-50%); /* Perfect horizontal centering */
+      left: 39%;
       height: 100px;
       width: 100px;
       color: white;
       cursor: pointer;
-      z-index: 100;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      /* Stabilize animation rendering */
+      backface-visibility: hidden;
+      will-change: transform;
     }
 
 
