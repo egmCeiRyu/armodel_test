@@ -115,17 +115,20 @@
         font-size: 28px;
     }
 
+    #view-model-btn-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     #view-model-btn {
       position: fixed;
+      align-items: center;
       bottom: 3%;
-      left: 39%;
       height: 100px;
       width: 100px;
-      color: white;
       cursor: pointer;
       z-index: 1000;
-      display: flex;
-      align-items: center;
       justify-content: center;
 
       /* Stabilize animation rendering */
@@ -186,13 +189,14 @@
       }
 
       #view-model-btn {
+        display: flex;
+        align-items: center;
         position: fixed;
         color: white;
         cursor: pointer;
         margin: auto;
         bottom: 5%;
         scale: 129%;
-        left: 46%;
       }
       
       #view-model-btn-bg {
