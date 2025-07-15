@@ -483,11 +483,11 @@
           width: 300px;
         }
       
-      #controls{
-        left: 10px;
-        right: auto;
+      #controlsButton{
+        right: 42px;
         width: auto;
-        bottom: 59px;
+        top: 95px;
+        scale: 1.45;
       }
       
       #ar-button{
