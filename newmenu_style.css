@@ -192,9 +192,9 @@
         margin: auto;
         bottom: 5%;
         scale: 129%;
-        left: 52%;
-        transform: translateX(-50%); 
+        left: 46%;
       }
+      
       #view-model-btn-bg {
         position: fixed;
         bottom: 42px; /* Distance from the bottom of the screen */
