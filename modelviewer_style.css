@@ -78,7 +78,7 @@
     #controls {
       position: fixed;
       bottom: 130px;
-      left: 20px;
+      left: 25px;
       max-width: unset;
       transform: unset;
       pointer-events: auto;
@@ -500,6 +500,13 @@
       .dim{
         font-size: 0.6em;
       }
+      
+      #controls {
+        position: fixed;
+        bottom: 64px;
+        left: 25px;
+        z-index: 100;
+    }
     }
 
 
