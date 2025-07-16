@@ -478,14 +478,7 @@
         .loadingText img{
           width: 300px;
         }
-      
-      #controlsButton{
-        right: 42px;
-        width: auto;
-        top: 95px;
-        scale: 1.45;
-      }
-      
+          
       #ar-button{
         right: 10px;
         left: auto;
@@ -502,7 +495,21 @@
         bottom: 64px;
         left: 25px;
         z-index: 100;
-    }
+      }
+      
+      .specification {
+        scale: 110%;
+        position: absolute;  
+        right: 8%;
+        top: -4%
+      }
+
+      .controls {
+        scale: 112%;
+        position: absolute;  
+        right: 7.9%;
+        top: 12%
+      }
     }
 
 
