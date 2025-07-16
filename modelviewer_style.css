@@ -269,16 +269,16 @@
     }
 
     .specification {
-      scale: 220%;
+      scale: 304%;
       position: absolute;  
-      right: 8%;
+      right: 14%;
       top: 5%
     }
 
     .controls {
-      scale: 61%;
+      scale: 85%;
       position: absolute;  
-      right: -1.9%;
+      right: 1.1%;
       top: 5%
     }
 
