@@ -476,7 +476,7 @@
     modelIframe.src = "";
   });
 </script>
-<script>
+  <script>
   modelViewer.addEventListener('ar-status', (event) => {
   if (event.detail.status === 'presenting') {
     // Estamos em AR (iOS Quick Look ou outros modos)
@@ -500,6 +500,14 @@
   }
 });
 </script>
+  <script>
+    const modelViewer = document.querySelector('#modelViewer');
+
+    modelViewer.addEventListener('load', () => {
+      modelViewer.updateFraming(); // ensure model fits in view
+      modelViewer.fieldOfView = '1deg'; // optional fine-tuning
+    });
+  </script>
   
 </body>
 </html>
