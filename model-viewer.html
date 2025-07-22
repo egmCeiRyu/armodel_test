@@ -14,8 +14,8 @@
     shadow-intensity="1"
     shadow-softness="1"
     camera-controls
-    touch-action="manipulation"
-    max-camera-orbit="auto 90deg auto"
+    touch-action="pan-y, pan-x, none"
+    camera-orbit="-25deg 75deg auto"
     scale="1 1 1"
     orbit-sensitivity="2"
     ar-modes="webxr scene-viewer quick-look">
@@ -500,6 +500,7 @@
   }
 });
 </script>
+  <!--
   <script>
     const modelViewer = document.querySelector('#modelViewer');
 
@@ -508,6 +509,9 @@
       modelViewer.fieldOfView = '1deg'; // optional fine-tuning
     });
   </script>
+  -->
+  
+
   
 </body>
 </html>
