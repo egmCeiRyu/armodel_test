@@ -197,13 +197,11 @@
       z-index: 9999;
       text-align: center;
     }
+
     .loadingText img{
       width: 350px;
+      margin: 0px;
     }
-       
-
-    /* === AR Button === */
-
 
     #ar-button:after {
       content: "";
