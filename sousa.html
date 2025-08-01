@@ -19,17 +19,25 @@
 
     #controls {
       margin-top: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 44px;
+      margin-top: 20px;
     }
 
     .button-wrapper {
       position: relative;
-      display: inline-block;
-      margin: 22px;
-      scale: 88%;
+      scale: 86%;
     }
 
     .button-wrapper img {
-      width: 67px;
+      width: 60px;
       cursor: pointer;
       transition: transform 0.2s;
       display: block;
@@ -43,13 +51,14 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0, 123, 255, 0.4); /* Transparent blue */
-      border-radius: 121px;
-      pointer-events: none; /* Let clicks pass through */
+      border-radius: 90px;
+      pointer-events: none;
     }
 
     #exit-btn {
-      scale: 55%;
-      margin: -17px;
+      margin-top: 20px;
+      width: 48px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -59,15 +68,22 @@
   </div>
 
   <div id="controls">
-    <span id="back-wrapper" class="button-wrapper">
-      <img id="back-btn" src="icon/back.png" alt="Back" onclick="goToPage(0)">
-    </span>
-    <span id="middle-wrapper" class="button-wrapper">
-      <img id="middle-btn" src="icon/middle.png" alt="Middle" onclick="goToPage(1)">
-    </span>
-    <span id="next-wrapper" class="button-wrapper">
-      <img id="next-btn" src="icon/next.png" alt="Next" onclick="goToPage(2)">
-    </span>
+    <!-- Row of navigation buttons -->
+    <div class="button-row">
+      <span id="back-wrapper" class="button-wrapper">
+        <img id="back-btn" src="icon/back.png" alt="Back" onclick="goToPage(0)">
+      </span>
+
+      <span id="middle-wrapper" class="button-wrapper">
+        <img id="middle-btn" src="icon/middle.png" alt="Middle" onclick="goToPage(1)">
+      </span>
+
+      <span id="next-wrapper" class="button-wrapper">
+        <img id="next-btn" src="icon/next.png" alt="Next" onclick="goToPage(2)">
+      </span>
+    </div>
+
+    <!-- Return button below the 3 main buttons -->
     <img id="exit-btn" src="icon/returnBtn2.png" alt="Exit" onclick="exitViewer()">
   </div>
 
