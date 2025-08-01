@@ -21,30 +21,35 @@
       margin-top: 0px;
     }
 
-    #controls img {
-      width: 75px; /* Adjust size of your button images */
-      cursor: pointer;
-      transition: transform 0.2s;
-      display: inline;
+    .button-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 22px;
+      scale: 88%;
     }
 
-      
-    #back-btn{
-      scale: 135%;
-      padding : 0px;
-      margin : 22px;
+    .button-wrapper img {
+      width: 67px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      display: block;
     }
-      
-    #next-btn{
-      scale: 135%;
-      padding : 0px;
-      margin : 22px;
+
+    .button-wrapper.active::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 123, 255, 0.4); /* Transparent blue */
+      border-radius: 121px;
+      pointer-events: none; /* Let clicks pass through */
     }
-      
-    #exit-btn{
-      scale: 55%; 
-      padding : -21px;
-      margin : 0px;
+
+    #exit-btn {
+      scale: 55%;
+      margin: -17px;
     }
   </style>
 </head>
@@ -54,9 +59,16 @@
   </div>
 
   <div id="controls">
-    <img id="back-btn" src="icon/back.png" alt="Back" onclick="goBack()" style="display:none;">
-    <img id="exit-btn" src="icon/returnBtn2.png" alt="Exit" onclick="exitViewer()" style="display:none;">
-    <img id="next-btn" src="icon/next.png" alt="Next" onclick="goNext()" style="display:none;">
+    <span id="back-wrapper" class="button-wrapper">
+      <img id="back-btn" src="icon/back.png" alt="Back" onclick="goToPage(0)">
+    </span>
+    <span id="middle-wrapper" class="button-wrapper">
+      <img id="middle-btn" src="icon/middle.png" alt="Middle" onclick="goToPage(1)">
+    </span>
+    <span id="next-wrapper" class="button-wrapper">
+      <img id="next-btn" src="icon/next.png" alt="Next" onclick="goToPage(2)">
+    </span>
+    <img id="exit-btn" src="icon/returnBtn2.png" alt="Exit" onclick="exitViewer()">
   </div>
 
   <script>
@@ -67,9 +79,9 @@
     let currentIndex = 0;
 
     const mainImage = document.getElementById("main-image");
-    const backBtn = document.getElementById("back-btn");
-    const nextBtn = document.getElementById("next-btn");
-    const exitBtn = document.getElementById("exit-btn");
+    const backWrapper = document.getElementById("back-wrapper");
+    const middleWrapper = document.getElementById("middle-wrapper");
+    const nextWrapper = document.getElementById("next-wrapper");
 
     function updateImage() {
       mainImage.src = images[currentIndex];
@@ -77,43 +89,30 @@
     }
 
     function updateButtons() {
-      backBtn.style.display = "none";
-      nextBtn.style.display = "none";
-      exitBtn.style.display = "none";
+      backWrapper.classList.remove("active");
+      middleWrapper.classList.remove("active");
+      nextWrapper.classList.remove("active");
 
       if (currentIndex === 0) {
-        nextBtn.style.display = "inline-block";
-        exitBtn.style.display = "inline-block";
+        backWrapper.classList.add("active");
       } else if (currentIndex === 1) {
-        backBtn.style.display = "inline-block";
-        nextBtn.style.display = "inline-block";
-        exitBtn.style.display = "inline-block";
+        middleWrapper.classList.add("active");
       } else if (currentIndex === 2) {
-        backBtn.style.display = "inline-block";
-        exitBtn.style.display = "inline-block";
+        nextWrapper.classList.add("active");
       }
     }
 
-    function goNext() {
-      if (currentIndex < images.length - 1) {
-        currentIndex++;
-        updateImage();
-      }
-    }
-
-    function goBack() {
-      if (currentIndex > 0) {
-        currentIndex--;
+    function goToPage(index) {
+      if (index >= 0 && index < images.length) {
+        currentIndex = index;
         updateImage();
       }
     }
 
     function exitViewer() {
-      // ✅ Return to the model-viewer page with the same model
       if (selectedModelUrl) {
         window.location.href = `model-viewer.html?model=${encodeURIComponent(selectedModelUrl)}`;
       } else {
-        alert("Model URL not found!");
         window.location.href = 'model-viewer.html';
       }
     }
