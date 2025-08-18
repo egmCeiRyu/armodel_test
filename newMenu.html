@@ -112,6 +112,7 @@
 
     const thumbnails = document.querySelectorAll('.thumbnail-link');
     const viewModelBtn = document.getElementById('view-model-btn');
+    const hosokawaLink = document.querySelector('.companylogo');
 
     thumbnails.forEach(thumb => {
       thumb.addEventListener('click', () => {
@@ -132,6 +133,11 @@
         window.location.href = `model-viewer.html?model=${encodeURIComponent(selectedModelUrl)}`;
       }
     });
+
+    hosokawaLink.addEventListener("click", () => {
+      window.location.href = 'https://www.hosokawamicron.co.jp/jp/';
+    });
+
   </script>
     
     <!--
