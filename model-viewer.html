@@ -7,6 +7,22 @@
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <link rel="stylesheet" href="modelviewer_style.css">
   <link rel="stylesheet" href="https://use.typekit.net/zfi8dmc.css"> 
+  <style>
+      .toggle-btn {
+        /* This creates a pill-like shape */
+        border: none;
+        scale: 63%;
+        font-size: 14px;
+        cursor: pointer;
+        color: white;
+        transition: background-color 0.3s ease; /* Smooth color transition */
+      }
+    
+    label{
+      font: normal 11px Arial;
+      padding: 0px;
+    }
+  </style>
 </head>
 
 <body>
@@ -41,9 +57,11 @@
       <!-- Botão voltar -->
       <img id="ar-button" src="icon/arbtn.png" slot="ar-button" alt="arbtn">
       <div id="controls" class="dim glass">
-        <label for="show-dimensions"><span class="checkbox-custom"></span>寸法を示す：</label>
-        <input id="show-dimensions" type="checkbox" checked="true" >
+        <!--<label for="show-dimensions">寸法を示す：</label>-->
+        <!--<input id="show-dimensions" type="checkbox" checked="true">-->
+        <img id="dimensions-toggle-btn" class="toggle-btn" src="/icon/dim_onoff.png" alt="Dimensions Toggle">
       </div>
+    
     </model-viewer>
     <div id="buttonsGRP">
       <a href="newMenu.html">
@@ -102,26 +120,46 @@
     </div>
 
     <script type="module">
+      const changeColor = document.getElementById("dimensions-toggle-btn")
       const urlParams = new URLSearchParams(window.location.search);
       const modelUrl = urlParams.get('model');
       const modelViewer = document.getElementById('modelViewer');
       const checkbox = modelViewer.querySelector('#show-dimensions');
-
+      const dimensionsToggleButton = modelViewer.querySelector('#dimensions-toggle-btn');
+            
       function setVisibility(visible) {
         dimElements.forEach((element) => {
           if (visible) {
             element.classList.remove('hide');
+            changeColor.src = "/icon/dim_onoff.png"
           } else {
             element.classList.add('hide');
+            changeColor.src = "/icon/dim_off.png"
           }
         });
-    }
+      }
+      
+      dimensionsToggleButton.addEventListener('click', () => {
+        const isCurrentlyOn = dimensionsToggleButton.classList.toggle('on');
+        dimensionsToggleButton.classList.toggle('off', !isCurrentlyOn);
 
-      checkbox.addEventListener('change', () => {
-        setVisibility(checkbox.checked);
+        if (isCurrentlyOn) {
+          dimensionsToggleButton.textContent = "オン";
+          changeColor.src = "/icon/dim_off.png"
+        } else {
+          dimensionsToggleButton.textContent = "オフ";
+         
+        }
+
+        setVisibility(isCurrentlyOn);
       });
+      
 
 
+      //checkbox.addEventListener('change', () => {
+      //  setVisibility(checkbox.checked);
+      //});
+      
       if (modelUrl) {
         modelViewer.setAttribute('src', modelUrl);
       }
