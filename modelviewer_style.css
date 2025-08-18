@@ -85,6 +85,10 @@
       z-index: 100;
     }
 
+    #controlsButton{
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
     .dot {
       display: none;
     }
