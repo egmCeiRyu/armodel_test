@@ -58,9 +58,8 @@
 
     
     @media screen and (orientation: landscape){
-        #image-container img {
+        #image-container img{
             max-width: 27%;
-            height: auto;
             margin-top: 10px;
         }
         
