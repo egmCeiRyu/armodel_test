@@ -296,7 +296,7 @@
       position: absolute;
       transform: translateX(-50%);
       left: 10%;
-      top: 5%;
+      top: 6%;
       border-radius: 45px;
     }
 
@@ -398,7 +398,7 @@
         }
 
         .return {
-            top: 5%;
+            top: 6%;
             width: 35px;
             height: 35px;
         }
@@ -406,7 +406,7 @@
 
     @media screen and (orientation: landscape) {
         .return{
-         top: 5%;
+         top: 6%;
          left: 8%;
         }
         
