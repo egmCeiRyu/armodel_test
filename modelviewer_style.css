@@ -495,14 +495,14 @@
       .specification {
         scale: 80%;
         position: absolute;  
-        right: 8%;
+        right: 2%;
         top: 5%
       }
 
       .controls {
         scale: 80%;
         position: absolute;  
-        right: 7.9%;
+        right: 2%;
         top: 23%
       }
     }
