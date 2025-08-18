@@ -57,7 +57,7 @@
     }
 
     
-    @media screen and (orientation: landscape){
+    @media screen and (max-width: 600px) and (orientation: landscape){
         #image-container img {
             max-width: 27%;
             height: auto;
@@ -66,8 +66,7 @@
         
         #controls {
             scale: 84%;
-        }
-      
+        } 
     }
       
       
