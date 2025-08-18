@@ -280,7 +280,6 @@
       top: 14%
     }
 
-
     .return {
       width: 50px;
       height: 50px;
@@ -290,7 +289,6 @@
       top: 5%;
       border-radius: 45px;
     }
-
 
     /* === Return Button === */
     #return-button {
@@ -331,7 +329,6 @@
         z-index: 10;
         position: fixed;
     }
-
 
     .thumbnail-link:hover {
         transform: translateY(-5px);
@@ -426,6 +423,10 @@
           border: solid #002476;
           font-size: 19px;
         }
+      
+        #specButton{
+            
+        }
     }
      
 
@@ -496,14 +497,14 @@
       }
       
       .specification {
-        scale: 110%;
+        scale: 80%;
         position: absolute;  
         right: 8%;
         top: 5%
       }
 
       .controls {
-        scale: 112%;
+        scale: 80%;
         position: absolute;  
         right: 7.9%;
         top: 23%
