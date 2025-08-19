@@ -88,7 +88,6 @@
       left: 25px;
       max-width: unset;
       transform: unset;
-      pointer-events: auto;
       z-index: 100;
     }
 
@@ -287,7 +286,7 @@
       scale: 85%;
       position: absolute;  
       right: 1.1%;
-      top: 11%
+      top: 13%
     }
 
     .return {

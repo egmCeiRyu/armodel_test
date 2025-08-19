@@ -27,6 +27,8 @@
       font: normal 12pt Arial;
       font-weight: 500;
       color: white;
+      pointer-events: auto;
+      border-radius: 115px;
     }
   </style>
 </head>
@@ -41,7 +43,7 @@
     camera-orbit="-25deg 75deg auto"
     scale="1 1 1"
     orbit-sensitivity="2"
-    exposure="0.9"  
+    exposure="1.4"  
     
     ar-modes="webxr scene-viewer quick-look">
 
@@ -65,9 +67,8 @@
                     </svg>
       <!-- Botão voltar -->
       <img id="ar-button" src="icon/arbtn.png" slot="ar-button" alt="arbtn">
-      <div id="controls" class="dim glass">
-        <label for="show-dimensions">寸法を示す：</label>
-        <button class="hideDim" type="button">オン</button>
+      <div id="controls">
+        <button class="hideDim" type="button">寸法：オン</button>
       </div>
     </model-viewer>
   
@@ -157,14 +158,14 @@
       // Toggle on button click
       toggleButton.addEventListener('click', () => {
         setVisibility(!dimsVisible);
-          if (toggleButton.textContent === 'オン') {
+          if (toggleButton.textContent === '寸法：オン') {
     // If it's 'Turn On', change it to 'Turn Off'
             toggleButton.style.backgroundColor = "red";
-            toggleButton.textContent = 'オフ';
+            toggleButton.textContent = '寸法：オフ';
           } else {
             // Otherwise, change it back to 'Turn On'
             toggleButton.style.backgroundColor = "green";
-            toggleButton.textContent = 'オン';
+            toggleButton.textContent = '寸法：オン';
           }
           });
 
