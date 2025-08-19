@@ -7,6 +7,12 @@
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <link rel="stylesheet" href="modelviewer_style.css">
   <link rel="stylesheet" href="https://use.typekit.net/zfi8dmc.css"> 
+  <style>
+    .hideDim{
+      font: normal 12pt Arial;
+      font-weight: 500;
+    }
+  </style>
 </head>
 
 <body>
@@ -43,9 +49,10 @@
       <img id="ar-button" src="icon/arbtn.png" slot="ar-button" alt="arbtn">
       <div id="controls" class="dim glass">
         <label for="show-dimensions"><span class="checkbox-custom"></span>寸法を示す：</label>
-        <input id="show-dimensions" type="checkbox" checked="true" >
+        <button class="hideDim" type="button">オン</button>
       </div>
     </model-viewer>
+  
     <div id="buttonsGRP">
       <a href="newMenu.html">
         <img class="return" src="icon/returnbtn.png" alt="return">
@@ -106,21 +113,45 @@
       const urlParams = new URLSearchParams(window.location.search);
       const modelUrl = urlParams.get('model');
       const modelViewer = document.getElementById('modelViewer');
+      //checkbox on/off
       const checkbox = modelViewer.querySelector('#show-dimensions');
+      const toggleButton = modelViewer.querySelector(".hideDim");
+      
+      const dimElements = [
+        ...modelViewer.querySelectorAll('button[slot^="hotspot-dim"]'),
+        modelViewer.querySelector('#dimLines')
+      ];
+      
+      let dimsVisible = true; // state tracker
 
       function setVisibility(visible) {
-        dimElements.forEach((element) => {
+        dimElements.forEach((el) => {
           if (visible) {
-            element.classList.remove('hide');
+            el.classList.remove('hide');
           } else {
-            element.classList.add('hide');
+            el.classList.add('hide');
           }
         });
-    }
+        dimsVisible = visible;
+      }
 
-      checkbox.addEventListener('change', () => {
-        setVisibility(checkbox.checked);
-      });
+      // Toggle on button click
+      toggleButton.addEventListener('click', () => {
+        setVisibility(!dimsVisible);
+          if (toggleButton.textContent === 'オン') {
+    // If it's 'Turn On', change it to 'Turn Off'
+            toggleButton.style.backgroundColor = "red";
+            toggleButton.textContent = 'オフ';
+          } else {
+            // Otherwise, change it back to 'Turn On'
+            toggleButton.style.backgroundColor = "green";
+            toggleButton.textContent = 'オン';
+          }
+          });
+
+      // Initialize
+      setVisibility(true);
+      toggleButton.style.backgroundColor = "green";
 
 
       if (modelUrl) {
@@ -243,7 +274,7 @@
         //light.direction.set(0.5, -1, 0.5);
       });
 
-      const dimElements = [...modelViewer.querySelectorAll('button'), modelViewer.querySelector('#dimLines')];
+      //const dimElements = [...modelViewer.querySelectorAll('button'), modelViewer.querySelector('#dimLines')];
 
         // update svg
         function drawLine(svgLine, dotHotspot1, dotHotspot2, dimensionHotspot) {
@@ -424,10 +455,6 @@
         }
       });
 
-       //// preventing to scroll
-      //document.body.addEventListener('touchmove', function (e) {
-      //e.preventDefault();
-      //}, { passive: false });
   </script>
 
   <script type="module">
@@ -467,16 +494,16 @@
       }
     });
 
-  specButton.addEventListener('click', () => {
-    specOverlay.style.display = 'flex';
-  });
+    specButton.addEventListener('click', () => {
+      specOverlay.style.display = 'flex';
+    });
 
-  closeSpec.addEventListener('click', () => {
-    specOverlay.style.display = 'none';
-    iframeWrapper.style.display = 'none';
-    modelIframe.src = "";
-  });
-</script>
+    closeSpec.addEventListener('click', () => {
+      specOverlay.style.display = 'none';
+      iframeWrapper.style.display = 'none';
+      modelIframe.src = "";
+    });
+  </script>
   <script>
   modelViewer.addEventListener('ar-status', (event) => {
   if (event.detail.status === 'presenting') {
@@ -501,18 +528,5 @@
   }
 });
 </script>
-  <!--
-  <script>
-    const modelViewer = document.querySelector('#modelViewer');
-
-    modelViewer.addEventListener('load', () => {
-      modelViewer.updateFraming(); // ensure model fits in view
-      modelViewer.fieldOfView = '1deg'; // optional fine-tuning
-    });
-  </script>
-  -->
-  
-
-  
 </body>
 </html>
