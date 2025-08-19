@@ -8,6 +8,21 @@
   <link rel="stylesheet" href="modelviewer_style.css">
   <link rel="stylesheet" href="https://use.typekit.net/zfi8dmc.css"> 
   <style>
+    #controls{
+      touch-action: manipulation;
+    }
+    label{
+      touch-action: manipulation;
+    }
+    button{
+      touch-action: manipulation;
+    }
+    .glass{
+      touch-action: manipulation;
+    }
+    .dim{
+      touch-action: manipulation;
+    }
     .hideDim{
       font: normal 12pt Arial;
       font-weight: 500;
@@ -49,7 +64,7 @@
       <!-- Botão voltar -->
       <img id="ar-button" src="icon/arbtn.png" slot="ar-button" alt="arbtn">
       <div id="controls" class="dim glass">
-        <label for="show-dimensions"><span class="checkbox-custom"></span>寸法を示す：</label>
+        <label for="show-dimensions">寸法を示す：</label>
         <button class="hideDim" type="button">オン</button>
       </div>
     </model-viewer>
