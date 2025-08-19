@@ -2,7 +2,7 @@
 <html lang="jp">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>3D Model Viewer</title>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <link rel="stylesheet" href="modelviewer_style.css">
@@ -41,6 +41,8 @@
     camera-orbit="-25deg 75deg auto"
     scale="1 1 1"
     orbit-sensitivity="2"
+    exposure="0.9"  
+    
     ar-modes="webxr scene-viewer quick-look">
 
                     <button style="background-color:rgb(0,0,0)" slot="hotspot-dot+X-Y+Z" class="dot" data-position="1 -1 1" data-normal="1 0 0"></button>
@@ -137,6 +139,7 @@
         ...modelViewer.querySelectorAll('button[slot^="hotspot-dim"]'),
         modelViewer.querySelector('#dimLines')
       ];
+      
       
       let dimsVisible = true; // state tracker
 
@@ -520,29 +523,32 @@
       modelIframe.src = "";
     });
   </script>
-  <script>
-  modelViewer.addEventListener('ar-status', (event) => {
-  if (event.detail.status === 'presenting') {
-    // Estamos em AR (iOS Quick Look ou outros modos)
-    // Tenta achar o botão de captura de tela no shadow DOM
-    const shadowRoot = modelViewer.shadowRoot;
-    if (shadowRoot) {
-      const screenshotButton = shadowRoot.querySelector('button[slot="ar-button"]');
-      if (screenshotButton) {
-        screenshotButton.style.display = 'none'; // oculta o botão screenshot
+  
+  <script>     
+    modelViewer.addEventListener('ar-status', (event) => {
+    if (event.detail.status === 'presenting') {
+      // Estamos em AR (iOS Quick Look ou outros modos)
+      // Tenta achar o botão de captura de tela no shadow DOM
+      const shadowRoot = modelViewer.shadowRoot;
+      if (shadowRoot) {
+        const screenshotButton = shadowRoot.querySelector('button[slot="ar-button"]');
+        if (screenshotButton) {
+          screenshotButton.style.display = 'none'; // oculta o botão screenshot
+        }
       }
-    }
-  } else if (event.detail.status === 'not-presenting') {
-    // Ao sair do AR, mostra o botão novamente
-    const shadowRoot = modelViewer.shadowRoot;
-    if (shadowRoot) {
-      const screenshotButton = shadowRoot.querySelector('button[slot="ar-button"]');
-      if (screenshotButton) {
-        screenshotButton.style.display = ''; // mostra o botão novamente
+    } else if (event.detail.status === 'not-presenting') {
+      // Ao sair do AR, mostra o botão novamente
+      const shadowRoot = modelViewer.shadowRoot;
+      if (shadowRoot) {
+        const screenshotButton = shadowRoot.querySelector('button[slot="ar-button"]');
+        if (screenshotButton) {
+          screenshotButton.style.display = ''; // mostra o botão novamente
+          }
+        }
       }
-    }
-  }
-});
+    });
+    
 </script>
+  
 </body>
 </html>
