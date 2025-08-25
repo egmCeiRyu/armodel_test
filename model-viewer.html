@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="modelviewer_style.css">
   <link rel="stylesheet" href="https://use.typekit.net/zfi8dmc.css"> 
   <style>
-    
     #controls{
       touch-action: manipulation;
     }
@@ -33,15 +32,10 @@
     }
     
     iframeWrapper , #specOverlay{
+      overflow: auto; /* or scroll */
       overscroll-behavior: contain;
-      overscroll-behavior-y: contain;
-      height: 1500px;
     }
     
-    iframe{
-      overflow: hidden;
-      height: 1500px;
-    }
     
   </style>
 </head>
