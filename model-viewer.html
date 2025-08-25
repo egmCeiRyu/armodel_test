@@ -33,22 +33,24 @@
     
     body.no-scroll {
       overflow: hidden;
-      height: 100vh;
+      position: fixed; /* lock the page */
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
     }
 
-    /* Make iframe scrollable */
     #iframeWrapper {
-      display: none; /* show via JS */
-      position: fixed; 
+      position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,0.85);
       z-index: 9999;
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
+      -webkit-overflow-scrolling: touch; /* smooth scrolling for iframe content */
     }
 
     #iframeWrapper iframe {
@@ -585,20 +587,26 @@
   <script>
     function showModel10() {
       const iframeWrapper = document.getElementById('iframeWrapper');
-
       iframeWrapper.style.display = 'flex';
 
-      // Prevent main page scrolling
+      // Lock main page scroll
       document.body.classList.add('no-scroll');
+
+      // Prevent iOS rubber-band scroll
+      document.body.addEventListener('touchmove', preventScroll, { passive: false });
     }
 
     function hideIframe() {
       const iframeWrapper = document.getElementById('iframeWrapper');
-
       iframeWrapper.style.display = 'none';
 
-      // Restore main page scrolling
+      // Restore scroll
       document.body.classList.remove('no-scroll');
+      document.body.removeEventListener('touchmove', preventScroll);
+    }
+
+    function preventScroll(e) {
+      e.preventDefault();
     }
   </script>
   
