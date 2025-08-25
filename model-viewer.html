@@ -36,9 +36,22 @@
       border-radius: 115px;
     }
     
-    iframeWrapper , #specOverlay{
+    #specOverlay{
       overflow: auto; /* or scroll */
       overscroll-behavior: contain;
+    }
+    
+    #iframeWrapper {
+      display: none;
+      position: fixed; 
+      width: 100vw; 
+      height: 100vh;
+      top: 0;
+      left: 0;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      background: rgba(0,0,0,0.85);
     }
     
     
@@ -561,18 +574,43 @@
         }
       }
     });
-    
-    function showIframe() {
-      document.getElementById('iframeWrapper').style.display = 'flex';
+  
+  </script>
+  
+  <script>
+    // Function to show the iframe for Model 10
+    function showModel10() {
+      const iframeWrapper = document.getElementById('iframeWrapper');
+      const iframe = document.getElementById('modelIframe');
+
+      // Set the iframe src to Model 10 content
+      iframe.src = "model10.html"; // replace with your actual iframe URL if needed
+
+      // Show the iframe
+      iframeWrapper.style.display = 'flex';
+
+      // Disable main page scrolling
       document.body.classList.add('no-scroll');
     }
 
+    // Function to hide the iframe
     function hideIframe() {
-      document.getElementById('iframeWrapper').style.display = 'none';
+      const iframeWrapper = document.getElementById('iframeWrapper');
+      const iframe = document.getElementById('modelIframe');
+
+      // Hide the iframe
+      iframeWrapper.style.display = 'none';
+
+      // Re-enable main page scrolling
       document.body.classList.remove('no-scroll');
+
+      // Optional: clear iframe src to stop any active scripts/media
+      iframe.src = '';
     }
-    
-</script>
+
+    // Example: attach the function to a button or model selection
+    document.getElementById('model10Button').addEventListener('click', showModel10);
+  </script>
   
 </body>
 </html>
