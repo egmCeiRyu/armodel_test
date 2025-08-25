@@ -33,7 +33,7 @@
     
     body.no-scroll {
       overflow: hidden;
-      position: fixed; /* lock the page */
+      position: fixed;   /* lock the page */
       width: 100%;
       height: 100%;
       top: 0;
@@ -46,11 +46,13 @@
       left: 0;
       width: 100vw;
       height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;                  /* enable scrolling only inside iframe wrapper */
+      -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
       z-index: 9999;
-      display: none;
       justify-content: center;
       align-items: center;
-      -webkit-overflow-scrolling: touch; /* smooth scrolling for iframe content */
     }
 
     #iframeWrapper iframe {
@@ -588,25 +590,13 @@
     function showModel10() {
       const iframeWrapper = document.getElementById('iframeWrapper');
       iframeWrapper.style.display = 'flex';
-
-      // Lock main page scroll
       document.body.classList.add('no-scroll');
-
-      // Prevent iOS rubber-band scroll
-      document.body.addEventListener('touchmove', preventScroll, { passive: false });
     }
 
     function hideIframe() {
       const iframeWrapper = document.getElementById('iframeWrapper');
       iframeWrapper.style.display = 'none';
-
-      // Restore scroll
       document.body.classList.remove('no-scroll');
-      document.body.removeEventListener('touchmove', preventScroll);
-    }
-
-    function preventScroll(e) {
-      e.preventDefault();
     }
   </script>
   
