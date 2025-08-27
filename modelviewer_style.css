@@ -299,6 +299,16 @@
       border-radius: 45px;
     }
 
+  .return1 {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        transform: translateX(-50%);
+        left: 10%;
+        top: 3%;
+        border-radius: 45px;
+      }
+
     /* === Return Button === */
     #return-button {
         position: fixed;
