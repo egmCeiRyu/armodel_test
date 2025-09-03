@@ -50,10 +50,15 @@
     }
 
     #exit-btn {
-      margin-top: 20px;
-      width: 52px;
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      width: 35px;
+      height: 35px;
+      position: absolute;
+      transform: translateX(-50%);
+      left: 10%;
+      top: 6%;
+      border-radius: 45px;
     }
 
     
