@@ -71,6 +71,17 @@
         #controls {
             scale: 84%;
         } 
+      
+        #exit-btn {
+          position: fixed;
+          top: 20px;
+          left: 42px;
+          width: 35px;
+          height: 35px;
+          cursor: pointer;
+          border-radius: 45px;
+          -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
     }
       
       
