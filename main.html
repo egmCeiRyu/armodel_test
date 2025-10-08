@@ -109,8 +109,20 @@
       setInterval(createBubble, 300);
 
       function isMobileDevice() {
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      }
+        const userAgent = navigator.userAgent;
+
+        // 1. Check for traditional mobile keywords (Android, iPhone, old iPad, etc.)
+        const mobileRegex = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i;
+        if (mobileRegex.test(userAgent)) {
+          return true;
+        }
+
+        // 2. Check for modern iPad (iPadOS)
+        // iPadOS masks as a desktop Mac ('MacIntel' platform) but has touch support
+        // Note: The navigator.platform property is deprecated, but widely used for this check.
+        if (navigator.platform.includes('MacIntel') && typeof navigator.maxTouchPoints !== 'undefined' && navigator.maxTouchPoints > 1) {
+          return true;
+        }
 
       const qrContainer = document.getElementById("qr-container");
       const mainContent = document.getElementById("main-content");
