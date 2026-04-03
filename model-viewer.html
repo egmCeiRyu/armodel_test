@@ -554,20 +554,15 @@
       }
     });
 
-    // specButton.addEventListener('click', () => {
-    //   specOverlay.style.display = 'flex';
-    // });
-
     specButton.addEventListener('click', () => {
       specOverlay.style.display = 'flex';
-      document.body.classList.add('no-scroll'); // 🔥 trava scroll
     });
+    
 
     closeSpec.addEventListener('click', () => {
       specOverlay.style.display = 'none';
       iframeWrapper.style.display = 'none';
       modelIframe.src = "";
-      document.body.classList.remove('no-scroll');
     });
   </script>
   
