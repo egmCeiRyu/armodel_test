@@ -128,13 +128,27 @@
         font-size: 28px;
     }
 
-    #view-model-btn-box{
+    /* #view-model-btn-box{
         display: flex;
         align-items: center;
         justify-content: center;
         outline: none;
-    }
+    } */
 
+    #view-model-btn-box{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      z-index: 1000;
+
+      padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    }
     #view-model-btn {
       position: fixed;
       align-items: center;
