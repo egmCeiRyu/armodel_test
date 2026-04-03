@@ -4,6 +4,10 @@
       display: none;
     }
 
+    button, a, .hideDim {
+      touch-action: manipulation; /* já ajuda */
+    }
+
 /* === Base Styles === */
     body {
       margin: 0;
