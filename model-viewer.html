@@ -120,6 +120,22 @@
       </a>
 
       <script>
+        const noScrollElements = document.querySelectorAll(
+        '#specButton, #controlsLink, .hideDim, .return'
+        );
+
+        noScrollElements.forEach(el => {
+          el.addEventListener('touchstart', (e) => {
+            e.stopPropagation();
+          }, { passive: true });
+
+          el.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // 🔥 bloqueia scroll
+          }, { passive: false });
+        });
+      </script>
+
+      <script>
         // Dynamically build the sousa.html link
         const modelParam = new URLSearchParams(window.location.search).get('model');
         const controlsLink = document.getElementById('controlsLink');
