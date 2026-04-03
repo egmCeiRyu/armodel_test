@@ -57,10 +57,10 @@
     
     /* === Thumbnail Image === */
     .thumbnail-img {
-        width: 142px;
-        height: 135px;
+        width: 222px;
+        height: 235px;
         object-fit: cover;
-        /* display: block; */
+        display: block;
         margin: 0 auto;
         border-radius: 4px;
         padding: 5px 5px 5px 5px;
