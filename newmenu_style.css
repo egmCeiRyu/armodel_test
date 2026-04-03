@@ -193,7 +193,28 @@
         0 6px 20px rgba(0,0,0,0.3);
     }
 
+
+
     /* Optional: Shrink button slightly on smaller screens */
+
+    @media screen and (min-width: 600px) {
+      .thumbnail-container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .thumbnail-img {
+        width: 280px; /* 👈 maior */
+      }
+
+      .label {
+        font-size: 18px;
+      }
+
+      .thumbnail-link{
+        padding: 15px;
+      }
+    }
     @media screen and (max-width: 600px) and (orientation: landscape){
       #view-model-btn {
         width: 100px;
