@@ -74,7 +74,6 @@
       text-align: center;
       /*transition: border 0.2s, box-shadow 0.2s;*/
       /* set the border of the choose button*/
-      transition: all 0.2s ease;
       padding: 9px;
       margin: 6px;
       background-color:#2957aa;
