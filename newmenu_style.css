@@ -101,8 +101,10 @@
       position: fixed;
       bottom: 0;
       left:0;
-      z-index: 50;
+      z-index: 900;
       width: 100%;
+      height: calc(70px + env(safe-area-inset-bottom));
+      background: #0d2aa6;
     }
 
     .foot {
