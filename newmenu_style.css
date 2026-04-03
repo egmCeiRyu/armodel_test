@@ -74,6 +74,7 @@
       text-align: center;
       /*transition: border 0.2s, box-shadow 0.2s;*/
       /* set the border of the choose button*/
+      transition: all 0.2s ease;
       padding: 9px;
       margin: 6px;
       background-color:#2957aa;
@@ -82,11 +83,9 @@
     
 
     .thumbnail-link.selected  {
-      /* border: 6px solid rgb(239, 120, 0);
-      padding: 5px; */
-      border: 2px solid #4db8ff;
-      box-shadow: 0 0 15px rgba(77, 184, 255, 0.6);
-
+      /* border: 6px solid rgb(239, 120, 0); */
+      border: 6px solid #3ec1ff;
+      padding: 5px;
     }
     
 
