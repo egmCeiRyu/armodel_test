@@ -38,5 +38,9 @@
   "model10": {
     "title": "ACM-30F粉砕設備<br><br>",
     "description": "<h3>・概要</h3>ACM-30F粉砕設備です。<br>微粉砕機ACM-30F、<br>集塵機VCP18-2000（下部ロータリーバルブ付）、<br>ブロワの順に配置した粉砕設備モデルです。<br><br>"
+  },
+  "model11": {
+    "title": "NewModel<br><br>",
+    "description": "<h3>・概要</h3>ACM-30F粉砕設備です。<br>微粉砕機ACM-30F、<br>集塵機VCP18-2000（下部ロータリーバルブ付）、<br>ブロワの順に配置した粉砕設備モデルです。<br><br>"
   }
 }
