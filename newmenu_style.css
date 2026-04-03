@@ -82,8 +82,10 @@
     
 
     .thumbnail-link.selected  {
-      border: 6px solid rgb(239, 120, 0);
-      padding: 5px;
+      /* border: 6px solid rgb(239, 120, 0);
+      padding: 5px; */
+      border: 2px solid #4db8ff;
+      box-shadow: 0 0 15px rgba(77, 184, 255, 0.6);
 
     }
     
