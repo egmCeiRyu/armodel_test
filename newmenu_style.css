@@ -49,6 +49,7 @@
         padding-top: -5px;
         padding-bottom: 93px;
         overflow-y: hidden;
+        border-radius: 4px;
         background: linear-gradient(to bottom, #4da6ff, #ffffff);
         /* padding: 15px;  */
         padding-bottom: 80px;
@@ -63,8 +64,7 @@
         display: block;
         margin: 0 auto;
         border-radius: 4px;
-
-        padding: 12px; /* igual em todos os lados */
+        padding: 5px 5px 5px 5px;
     }
 
         
@@ -75,7 +75,7 @@
       /*transition: border 0.2s, box-shadow 0.2s;*/
       /* set the border of the choose button*/
       padding: 9px;
-      margin: 12px;
+      margin: 6px;
       background-color:#2957aa;
       border-radius: 4px;
     }
@@ -221,4 +221,5 @@
         cursor: pointer;
         scale: 122%
       } 
-    }
+
+   }
