@@ -69,8 +69,8 @@
         
     .thumbnail-link {
       cursor: pointer;
-      display: inline-block;
-      text-align: center;
+      /* display: inline-block; */
+      /* text-align: center; */
       /*transition: border 0.2s, box-shadow 0.2s;*/
       /* set the border of the choose button*/
       padding: 9px;
