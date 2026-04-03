@@ -24,7 +24,7 @@
     }
 
     .title{
-      position: fixed;
+      position: sticky;
       top: 0;
       display: flex;
       background: #0068D4;
@@ -33,11 +33,9 @@
       font-family: "novecento-sans", sans-serif;
       color: #e0e0e0;
       margin:auto;
-      left: 0;
       width: 100%;
       text-align: center;
       overflow-y:auto;
-      z-index: 1000;
     }
 
     .thumbnail-container {
