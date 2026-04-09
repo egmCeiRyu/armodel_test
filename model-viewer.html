@@ -465,33 +465,31 @@
           const urlParams = new URLSearchParams(window.location.search);
           const modelParam = urlParams.get('model') || "";
 
-          // Como 202m ainda era grande, vamos tentar um valor fixo alto para teste
-          let multiplier = 10.5;
           if (modelParam.includes('model11.glb')) {
-              multiplier = 250; // Ajuste este número: maior = modelo menor
+              // 1. Aumentamos o Field of View (como uma lente olho de peixe)
+              // Isso faz o objeto no centro parecer muito menor instantaneamente.
+              modelViewer.fieldOfView = "90deg"; 
+              
+              // 2. Definimos uma distância de câmera fixa e segura
+              const distance = maxDim * 50; 
+              modelViewer.cameraOrbit = `0deg 75deg ${distance}m`;
+
+              // 3. Travamos o FOV mínimo para o componente não dar zoom automático
+              modelViewer.minFieldOfView = "90deg";
+
+              console.log("Ajuste de lente aplicado para o model11.");
+          } else {
+              // Reset para o comportamento padrão dos outros modelos
+              modelViewer.fieldOfView = "auto";
+              modelViewer.minFieldOfView = "auto";
+              const suggestedDistance = maxDim * 10.5;
+              modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
           }
-
-          const suggestedDistance = maxDim * multiplier;
-
-          // Define a órbita
-          modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
           
-          // Em vez de jumpToGoal(), usamos updateFraming() que é o padrão da v4.0.0
-          // Isso força o componente a re-calcular o enquadramento com a nova distância
+          // Força o redesenho
           if (typeof modelViewer.updateFraming === 'function') {
               modelViewer.updateFraming();
           }
-
-          console.log("Modelo:", modelParam, "| Distância Final:", suggestedDistance);
-      });
-
-        modelViewer.addEventListener('fullscreenchange', () => {
-          const arButtons = modelViewer.shadowRoot?.querySelectorAll('button[slot="ar-button"]');
-          if (arButtons && arButtons.length > 1) {
-            for (let i = 1; i < arButtons.length; i++) {
-              arButtons[i].remove();
-          }
-        }
       });
 
         closeSpec.addEventListener('click', () => {
