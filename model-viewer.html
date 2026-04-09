@@ -458,25 +458,29 @@
         modelViewer.addEventListener('camera-change', renderSVG);
       });
 
-      modelViewer.addEventListener('load', () => {
+        modelViewer.addEventListener('load', () => {
           const size = modelViewer.getDimensions();
           const maxDim = Math.max(size.x, size.y, size.z);
           
-          // Pegamos o nome do modelo atual da URL
           const urlParams = new URLSearchParams(window.location.search);
           const modelParam = urlParams.get('model') || "";
 
-          let suggestedDistance;
-
-          // Se o arquivo carregado for o model11, aumentamos o recuo da câmera
+          // Forçamos um valor bem alto para o model11
+          let multiplier = 10.5; 
           if (modelParam.includes('model11.glb')) {
-              suggestedDistance = maxDim * 40; // Aumentamos de 10.5 para 35 (ajuste se precisar de mais)
-          } else {
-              suggestedDistance = maxDim * 10.5; // Mantém o padrão para os outros modelos
+              multiplier = 60; // Aumentei para 60 para garantir que você veja a mudança
           }
 
-          modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
-        });
+          const suggestedDistance = maxDim * multiplier;
+
+          // Usamos setTimeout para garantir que o model-viewer já terminou 
+          // seus cálculos internos antes de mudarmos a câmera
+          setTimeout(() => {
+              modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
+              modelViewer.fieldOfView = "30deg"; // Fecha o ângulo para ajudar no enquadramento
+              console.log("Câmera ajustada para o modelo:", modelParam, "Distância:", suggestedDistance);
+          }, 100);
+      });
 
         modelViewer.addEventListener('fullscreenchange', () => {
           const arButtons = modelViewer.shadowRoot?.querySelectorAll('button[slot="ar-button"]');
