@@ -468,14 +468,14 @@
           if (modelParam.includes('model11.glb')) {
               // 1. Aumentamos o Field of View (como uma lente olho de peixe)
               // Isso faz o objeto no centro parecer muito menor instantaneamente.
-              modelViewer.fieldOfView = "85deg"; 
+              modelViewer.fieldOfView = "75deg"; 
               
               // 2. Definimos uma distância de câmera fixa e segura
               const distance = maxDim * 50; 
               modelViewer.cameraOrbit = `0deg 75deg ${distance}m`;
 
               // 3. Travamos o FOV mínimo para o componente não dar zoom automático
-              modelViewer.minFieldOfView = "85deg";
+              modelViewer.minFieldOfView = "75deg";
 
               console.log("Ajuste de lente aplicado para o model11.");
           } else {
