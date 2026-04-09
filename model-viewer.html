@@ -466,23 +466,24 @@
           const modelParam = urlParams.get('model') || "";
 
           if (modelParam.includes('model11.glb')) {
-              // Multiplicador agressivo para modelos gigantes
-              const extremeDistance = maxDim * 150; 
+              // Multiplicador muito mais alto para forçar o recuo
+              const distance = maxDim * 150; 
               
-              // Aplicamos a distância e impedimos que o zoom automático do model-viewer interfira
-              modelViewer.cameraOrbit = `0deg 75deg ${extremeDistance}m`;
-              modelViewer.fieldOfView = "10deg"; // Um FOV menor afasta ainda mais a percepção
+              // 1. Define a órbita
+              modelViewer.cameraOrbit = `0deg 75deg ${distance}m`;
               
-              // Opcional: define um limite para o usuário não conseguir chegar muito perto no scroll
-              modelViewer.minCameraOrbit = `auto auto ${extremeDistance * 0.5}m`;
+              // 2. Trava a distância mínima para o auto-framing não "puxar" de volta
+              modelViewer.minCameraOrbit = `auto auto ${distance}m`;
               
-              console.log("Ajuste EXTREMO para o model11. Distância calculada:", extremeDistance);
+              // 3. Força a câmera a ir para o lugar agora mesmo
+              modelViewer.jumpToGoal();
+              
+              console.log("Forçando distância de segurança para o model11:", distance);
           } else {
-              // Padrão para os outros modelos
+              // Reset para outros modelos
+              modelViewer.minCameraOrbit = "auto auto auto";
               const suggestedDistance = maxDim * 10.5;
               modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
-              modelViewer.fieldOfView = "auto";
-              modelViewer.minCameraOrbit = "auto auto auto";
           }
       });
 
