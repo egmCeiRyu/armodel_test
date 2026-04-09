@@ -458,28 +458,32 @@
         modelViewer.addEventListener('camera-change', renderSVG);
       });
 
-        modelViewer.addEventListener('load', () => {
+      modelViewer.addEventListener('load', () => {
           const size = modelViewer.getDimensions();
           const maxDim = Math.max(size.x, size.y, size.z);
           
           const urlParams = new URLSearchParams(window.location.search);
           const modelParam = urlParams.get('model') || "";
 
-          // Forçamos um valor bem alto para o model11
-          let multiplier = 10.5; 
           if (modelParam.includes('model11.glb')) {
-              multiplier = 60; // Aumentei para 60 para garantir que você veja a mudança
-          }
-
-          const suggestedDistance = maxDim * multiplier;
-
-          // Usamos setTimeout para garantir que o model-viewer já terminou 
-          // seus cálculos internos antes de mudarmos a câmera
-          setTimeout(() => {
+              // Multiplicador agressivo para modelos gigantes
+              const extremeDistance = maxDim * 150; 
+              
+              // Aplicamos a distância e impedimos que o zoom automático do model-viewer interfira
+              modelViewer.cameraOrbit = `0deg 75deg ${extremeDistance}m`;
+              modelViewer.fieldOfView = "10deg"; // Um FOV menor afasta ainda mais a percepção
+              
+              // Opcional: define um limite para o usuário não conseguir chegar muito perto no scroll
+              modelViewer.minCameraOrbit = `auto auto ${extremeDistance * 0.5}m`;
+              
+              console.log("Ajuste EXTREMO para o model11. Distância calculada:", extremeDistance);
+          } else {
+              // Padrão para os outros modelos
+              const suggestedDistance = maxDim * 10.5;
               modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
-              modelViewer.fieldOfView = "30deg"; // Fecha o ângulo para ajudar no enquadramento
-              console.log("Câmera ajustada para o modelo:", modelParam, "Distância:", suggestedDistance);
-          }, 100);
+              modelViewer.fieldOfView = "auto";
+              modelViewer.minCameraOrbit = "auto auto auto";
+          }
       });
 
         modelViewer.addEventListener('fullscreenchange', () => {
