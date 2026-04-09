@@ -458,12 +458,25 @@
         modelViewer.addEventListener('camera-change', renderSVG);
       });
 
-        modelViewer.addEventListener('load', () => {
+      modelViewer.addEventListener('load', () => {
           const size = modelViewer.getDimensions();
           const maxDim = Math.max(size.x, size.y, size.z);
-          const suggestedDistance = maxDim * 10.5; // Ajuste o fator conforme necessário
+          
+          // Pegamos o nome do modelo atual da URL
+          const urlParams = new URLSearchParams(window.location.search);
+          const modelParam = urlParams.get('model') || "";
+
+          let suggestedDistance;
+
+          // Se o arquivo carregado for o model11, aumentamos o recuo da câmera
+          if (modelParam.includes('model11.glb')) {
+              suggestedDistance = maxDim * 35; // Aumentamos de 10.5 para 35 (ajuste se precisar de mais)
+          } else {
+              suggestedDistance = maxDim * 10.5; // Mantém o padrão para os outros modelos
+          }
+
           modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
-      });
+        });
 
         modelViewer.addEventListener('fullscreenchange', () => {
           const arButtons = modelViewer.shadowRoot?.querySelectorAll('button[slot="ar-button"]');
