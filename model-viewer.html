@@ -465,26 +465,24 @@
           const urlParams = new URLSearchParams(window.location.search);
           const modelParam = urlParams.get('model') || "";
 
-          let multiplier;
-
+          // Como 202m ainda era grande, vamos tentar um valor fixo alto para teste
+          let multiplier = 10.5;
           if (modelParam.includes('model11.glb')) {
-              // Se desapareceu com 150, vamos tentar 45. 
-              // Se ainda estiver longe, diminua para 30.
-              multiplier = 45; 
-          } else {
-              multiplier = 10.5;
+              multiplier = 150; // Ajuste este número: maior = modelo menor
           }
 
           const suggestedDistance = maxDim * multiplier;
 
-          // Aplicamos a distância e forçamos o enquadramento
+          // Define a órbita
           modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
-          modelViewer.minCameraOrbit = "auto auto auto"; // Libera o limite para não bugar
           
-          // O jumpToGoal faz a câmera ir direto para a posição sem animação
-          modelViewer.jumpToGoal();
-          
-          console.log("Ajuste Final - Modelo:", modelParam, "Distância:", suggestedDistance);
+          // Em vez de jumpToGoal(), usamos updateFraming() que é o padrão da v4.0.0
+          // Isso força o componente a re-calcular o enquadramento com a nova distância
+          if (typeof modelViewer.updateFraming === 'function') {
+              modelViewer.updateFraming();
+          }
+
+          console.log("Modelo:", modelParam, "| Distância Final:", suggestedDistance);
       });
 
         modelViewer.addEventListener('fullscreenchange', () => {
