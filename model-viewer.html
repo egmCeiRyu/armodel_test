@@ -465,26 +465,26 @@
           const urlParams = new URLSearchParams(window.location.search);
           const modelParam = urlParams.get('model') || "";
 
+          let multiplier;
+
           if (modelParam.includes('model11.glb')) {
-              // Multiplicador muito mais alto para forçar o recuo
-              const distance = maxDim * 150; 
-              
-              // 1. Define a órbita
-              modelViewer.cameraOrbit = `0deg 75deg ${distance}m`;
-              
-              // 2. Trava a distância mínima para o auto-framing não "puxar" de volta
-              modelViewer.minCameraOrbit = `auto auto ${distance}m`;
-              
-              // 3. Força a câmera a ir para o lugar agora mesmo
-              modelViewer.jumpToGoal();
-              
-              console.log("Forçando distância de segurança para o model11:", distance);
+              // Se desapareceu com 150, vamos tentar 45. 
+              // Se ainda estiver longe, diminua para 30.
+              multiplier = 45; 
           } else {
-              // Reset para outros modelos
-              modelViewer.minCameraOrbit = "auto auto auto";
-              const suggestedDistance = maxDim * 10.5;
-              modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
+              multiplier = 10.5;
           }
+
+          const suggestedDistance = maxDim * multiplier;
+
+          // Aplicamos a distância e forçamos o enquadramento
+          modelViewer.cameraOrbit = `0deg 75deg ${suggestedDistance}m`;
+          modelViewer.minCameraOrbit = "auto auto auto"; // Libera o limite para não bugar
+          
+          // O jumpToGoal faz a câmera ir direto para a posição sem animação
+          modelViewer.jumpToGoal();
+          
+          console.log("Ajuste Final - Modelo:", modelParam, "Distância:", suggestedDistance);
       });
 
         modelViewer.addEventListener('fullscreenchange', () => {
